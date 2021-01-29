@@ -8,7 +8,7 @@
 
 std::vector<Game*>* getGames(){
     std::vector<Game*>* games = new std::vector<Game*>;
-    std::ifstream dataFile("data\\video_games.csv");
+    std::ifstream dataFile("./data/video_games.csv");
     std::string line;
 
     std::getline(dataFile, line); //Uses the unessecary first line containing data names
@@ -17,8 +17,15 @@ std::vector<Game*>* getGames(){
         Game* tempGame(new Game(line));
         games->push_back(tempGame);
     }
-
+    
+    dataFile.close();
     return games;
+}
+
+void clearGames(std::vector<Game*>* games){
+    for(auto it=games->begin(); it!=games->end(); ++it){
+        delete *it;
+    }
 }
 
 TEST_CASE( "Testing...", "[all]" ) {
@@ -44,4 +51,7 @@ TEST_CASE( "Testing...", "[all]" ) {
     }
     REQUIRE( value > 574.3);
     REQUIRE( value < 574.4);
+    
+    clearGames(games);
+    delete games;
 }
