@@ -7,8 +7,8 @@
 #include <vector>
 
 std::vector<Game*>* getGames(){
-    std::vector<Game*>* games;
-    std::ifstream dataFile("../data/video_games.csv");
+    std::vector<Game*>* games = new std::vector<Game*>;
+    std::ifstream dataFile("data\\video_games.csv");
     std::string line;
 
     std::getline(dataFile, line); //Uses the unessecary first line containing data names
@@ -17,6 +17,8 @@ std::vector<Game*>* getGames(){
         Game* tempGame(new Game(line));
         games->push_back(tempGame);
     }
+
+    return games;
 }
 
 TEST_CASE( "Testing...", "[all]" ) {
