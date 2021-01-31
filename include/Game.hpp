@@ -1,4 +1,5 @@
 #ifndef __HPP__GAME
+#define __HPP__GAME
 #include <string>
 
 class Game{
@@ -57,5 +58,5 @@ class Game{
         int releaseYear;
 };
 
-#endif !__HPP__GAME
+#endif
 
